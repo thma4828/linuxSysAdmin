@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "----CPU/RAM USAGE----"
 var1=$(free -m | cut -d' ' -f31 | tail -n 2 | grep . )
 echo  "Free RAM: ${var1} MB"
