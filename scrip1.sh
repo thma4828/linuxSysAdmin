@@ -1,5 +1,5 @@
 echo "----CPU/RAM USAGE----"
-var1=$(free -m | cut -d' ' -f32 | head -n 2 | grep . )
+var1=$(free -m | cut -d' ' -f31 | tail -n 2 | grep . )
 echo  "Free RAM: ${var1} MB"
 var2=$(uptime | cut -d: -f4)
 echo "CPU load average: ${var2}"
@@ -11,6 +11,8 @@ var4=$(ps -ef | grep -e "bash" | wc -l)
 echo "Number of bash shells: ${var4}"
 var5=$(ps -ef | grep -e "false" | wc -l)
 echo "Number of false shells: ${var5}"
-echo "----FILES AND DIRECTORIES----"
-var6=$(find ../../.. -type f | wc -l)
-echo "Number of files in the system: ${var6}"
+var6=$(ps -ef | grep -e "nologin" | wc -l)
+echo "Number of nologin shells: ${var6}"
+echo "----FILE SYSTEMs / DIRECTORIES----"
+var7=$(find /../.. -type f | wc -l)
+echo "Number of files in the system: ${var7}"
