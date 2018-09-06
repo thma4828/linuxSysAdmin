@@ -19,4 +19,13 @@ var7=$(find .. /../.. -type f | wc -l)
 echo "Number of files in the system: ${var7}"
 var8=$(find ../../.. -type d | wc -l)
 echo "Number of directories in the system: ${var8}"
-
+echo "----NETWORK----"
+var9=$(ping -w 1 127.0.0.1 | grep -e "packet loss" | cut -d, -f3 | cut -b 2)
+if [ $var9 -eq 0 ]
+	then
+		echo "connectivity is successfull!"
+fi
+if [ $var9 -gt 0 ]
+	then
+		echo "connectivity failure!"
+fi
