@@ -1,0 +1,2 @@
+root:x:0:0:root:/root:/bin/bash
+tmargoles:x:1000:1000:Theodore Margoles:/home/tmargoles:/bin/bash
