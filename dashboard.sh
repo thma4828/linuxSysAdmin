@@ -31,5 +31,13 @@ if [ $var9 -gt 0 ]
 fi
 echo -n "enp0s3 Bytes Recieved: "
 var10=$(cat /proc/net/dev | cut -b 10,11,12,13,14,15,16,17,18,19 | sort -nr | head -n 1 | cut -d' ' -f2)
-echo "$var10"
+echo -n "$var10"
+echo -n "        enp0s3 Bytes Transmitted: "
+varBT=$(cat /proc/net/dev | grep enp0s3 | cut -d' ' -f49)
+echo "$varBT"
+varLO=$(cat /proc/net/dev | cut -d' ' -f9 | tail -n 1)
+echo -n "lo Bytes Recieved: $varLO"
+varLT=$(cat /proc/net/dev | grep lo | cut -d' ' -f56)
+echo "     lo Bytes Transmitted: $varLT"
+
 
