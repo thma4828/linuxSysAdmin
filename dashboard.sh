@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "----CPU/RAM USAGE----"
-var1=$(free -m | grep Mem | cut -d' ' -f31)
+var1=$(free -m | grep Mem | awk '{print($4)}')
 echo  "Free RAM: ${var1} MB"
 var2=$(uptime | cut -d: -f4)
 echo "CPU load average: ${var2}"
@@ -30,14 +30,14 @@ if [ $var9 -gt 0 ]
 		echo "connectivity failure!"
 fi
 echo -n "enp0s3 Bytes Recieved: "
-var10=$(cat /proc/net/dev | grep enp0s3 | cut -d: -f2 | cut -d' ' -f4)
+var10=$(cat /proc/net/dev | grep enp0s3 | awk '{print($2)}')
 echo -n "$var10"
 echo -n "        enp0s3 Bytes Transmitted: "
-varBT=$(cat /proc/net/dev | grep enp0s3 | cut -d' ' -f49)
+varBT=$(cat /proc/net/dev | grep enp0s3 | awk '{print($10)}')
 echo "$varBT"
-varLO=$(cat /proc/net/dev | grep lo | cut -d: -f2 | cut -d' ' -f5)
+varLO=$(cat /proc/net/dev | grep lo | awk '{print($2)}')
 echo -n "lo Bytes Recieved: $varLO"
-varLT=$(cat /proc/net/dev | grep lo | cut -d: -f2 | cut -d' ' -f51)
+varLT=$(cat /proc/net/dev | grep lo | awk '{print($10)}')
 echo "     lo Bytes Transmitted: $varLT"
 
 
