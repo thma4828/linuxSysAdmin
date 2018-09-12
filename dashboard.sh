@@ -2,7 +2,7 @@
 echo "----CPU/RAM USAGE----"
 var1=$(free -m | grep Mem | awk '{print($4)}')
 echo  "Free RAM: ${var1} MB"
-var2=$(uptime | cut -d: -f4)
+var2=$(uptime | awk '{print($8 $9 $10)}')
 echo "CPU load average: ${var2}"
 echo "----USERS AND SHELLS----"
 var3=$(cat /etc/passwd | wc -l)
@@ -15,12 +15,12 @@ echo "Number of false shells: ${var5}"
 var6=$(cat /etc/passwd | grep nologin | wc -l)
 count1=0
 for i in $(cat /etc/passwd | cut -d: -f1); do
-	 c=$(ps -ef | grep $i | wc -l)
+	 c=$(ps -ef | cut -d' ' -f1 | grep $i | uniq -u | wc -l)
 	 if [ "$c" -gt 0 ]; then
 	    let count1=count1+1
 	 fi
 done
-echo "Number of active users processes: $count1"  
+echo "Number of active users: $count1"  
 echo "Number of nologin shells: ${var6}"
 echo "----FILE SYSTEMs / DIRECTORIES----"
 var7=$(find / -type f | wc -l)
