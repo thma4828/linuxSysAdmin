@@ -7,7 +7,7 @@ if [ $v1 -gt 80 ]
 		echo "the root directory has reached 80%, email being sent to root"
 		touch tmfile.txt
 		echo "root dir near full" >>tmfile.txt
-		mail -s "dear root" theodore.margoles@colorado.edu < tmfile.txt
+		mail -s "dear sys admin" theodore.margoles@colorado.edu < tmfile.txt
 		rm tmfile.txt
 fi 
 
@@ -16,7 +16,7 @@ if [ $v2 -gt 80 ]
 		echo "the boot directory has reached 80%, email being sent to root"
 		touch tm2.txt
 		echo "boot dir near full" >>tm2.txt
-		mail -s "dear root" theodore.margoles@colorado.edu < tm2.txt
+		mail -s "dear sys admin" theodore.margoles@colorado.edu < tm2.txt
 		rm tm2.txt
 fi
 
